@@ -1,0 +1,18 @@
+{
+  "name": "blockapi",
+  "version": "1.0.0",
+  "description": "API Endpoint to interface data from private blockchain ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Blockchain",
+    "API"
+  ],
+  "author": "Wright",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
