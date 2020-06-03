@@ -1,4 +1,6 @@
-/** ====================================|  
+const SHA256 = require('crypto-js/sha256');
+
+/** ====================================|
  * Class with a constructor for block   |
  * =====================================|
  */
@@ -8,20 +10,25 @@ class Block {
         this.height = 0;
         this.body = data;
         this.time = 0;
-        this.previousblockhash = "";
+        this.previousBlockHash = "";
     }
 }
 
-/** =========Blockchain Class ===================|
+/** ========= Blockchain Class ===================|
  * Class with a constructor for new Blockchain   |
  * ==============================================|
  */
 class BlockChain {
     constructor() {
         this.chain = [];
+        this.addBlock(new Block("First block in the chain - Genesis Block"));
     }
 
     addBlock(newBlock) {
+        if (this.chain.length > 0) {
+            newBlock.previousBlockHash = this.chain[this.chain.length - 1].hash
+        }
+        newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
         this.chain.push(newBlock);
     }
 }
