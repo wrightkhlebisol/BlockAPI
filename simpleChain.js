@@ -1,4 +1,5 @@
 const SHA256 = require('crypto-js/sha256');
+const db = require('./levelSandbox');
 
 /** ====================================|
  * Class with a constructor for block   |
@@ -20,7 +21,8 @@ class Block {
  */
 class BlockChain {
     constructor() {
-        this.chain = [];
+        // blockchain will be an array of blocks from leveldb
+        this.chain = db.getLevelDBData('blockchain');
         // Create the genesis block
         this.addBlock(new Block("First block in the chain - Genesis Block"));
     }
